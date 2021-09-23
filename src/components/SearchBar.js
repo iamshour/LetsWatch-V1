@@ -1,25 +1,38 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import Alert from "./Alert";
+
+// Context
+import ShowsContext from "../context/shows/showsContext";
 
 const SearchBar = () => {
     
     const [searchTerm, setSearchTerm] = useState('');
 
+    const { searchShows } = useContext(ShowsContext);
+
     const searchHandler = (e) => {
         e.preventDefault()
-        console.log(`searching for: ${searchTerm}`)
+
+        searchShows(searchTerm);
     }
 
     return (
-        <form className='search-container'>
-            <input
-                type='text'
-                placeholder='Search for your fav movies &amp; series...'
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className='search-bar'
+        <div className='search-container'>
+            <Alert 
+                type='danger'
+                message={'This is an alert'}
             />
-            <button onClick={searchHandler} className='search-btn'>Search</button>
-        </form>
+            <form>
+                <input
+                    type='text'
+                    placeholder='Search for your fav movies &amp; series...'
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className='search-bar'
+                />
+                <button onClick={searchHandler} className='search-btn'>Search</button>
+            </form>
+        </div>
     )
 }
 

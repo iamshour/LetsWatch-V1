@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import "./styles/resets.scss";
 
+import ShowsState from './context/shows/ShowsState';
+
 ReactDOM.render(
-  <React.StrictMode>
+  <ShowsState>
     <App />
-  </React.StrictMode>,
+  </ShowsState>,
   document.getElementById('root')
 );

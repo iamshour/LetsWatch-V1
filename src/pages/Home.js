@@ -1,10 +1,35 @@
+import { useContext } from "react"
+
+// Context
+import ShowsContext from "../context/shows/showsContext"
+
+// Comps
 import SearchBar from "../components/SearchBar"
+import SingleItem from "../components/SingleItem";
+import Loading from "../components/Loading";
+
 
 const Home = () => {
+
+    const {loading, shows} = useContext(ShowsContext);
+
     return (
-        <div className='home-page'>
+        <>
             <SearchBar />
-        </div>
+            {loading ? <Loading /> :
+                <div className='shows-container'>
+                    {shows.map(item => (
+                        <SingleItem 
+                            key={item.show.id}
+                            id={item.show.id}
+                            name={item.show.name}
+                            image={item.show.image}
+                            rating={item.show.rating.average ? item.show.rating.average : 'No rating'}
+                        />
+                    ))}
+                </div>
+            }
+        </>
     )
 }
 
