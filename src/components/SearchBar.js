@@ -3,25 +3,34 @@ import Alert from "./Alert";
 
 // Context
 import ShowsContext from "../context/shows/showsContext";
+import AlertsContext from "../context/alerts/alertsContext";
 
 const SearchBar = () => {
     
     const [searchTerm, setSearchTerm] = useState('');
 
-    const { searchShows } = useContext(ShowsContext);
+    const { searchShows, shows } = useContext(ShowsContext);
+
+    const { alert, setAlert } = useContext(AlertsContext);
 
     const searchHandler = (e) => {
         e.preventDefault()
 
-        searchShows(searchTerm);
+        if(searchTerm === '') {
+            setAlert('please enter something', 'danger')
+        } else {
+            searchShows(searchTerm);
+        } 
     }
 
     return (
         <div className='search-container'>
-            <Alert 
-                type='danger'
-                message={'This is an alert'}
-            />
+            { alert && 
+                <Alert 
+                    type={alert.type}
+                    message={alert.message}
+                /> 
+            }
             <form>
                 <input
                     type='text'

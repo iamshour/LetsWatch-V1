@@ -10,7 +10,7 @@ import {
     CLEAR_SINGLE_SHOW 
 } from '../types';
 
-const ShowsState = ({children}) => {
+const ShowsProvider = ({children}) => {
 
     const initialState = {
         shows: [],
@@ -25,12 +25,31 @@ const ShowsState = ({children}) => {
 
         const { data } = await axios.get(`https://api.tvmaze.com/search/shows?q=${searchTerm}`)
 
-        console.log(data);
-
         dispatch({
             type: SEARCH_SHOWS,
             payload: data
         });
+    }
+
+    const getSingleShow = async (id) => {
+        dispatch({
+            type: SET_LOADING
+        });
+        
+        const { data } = await axios.get(`https://api.tvmaze.com/shows/${id}`);
+
+        console.log(data);
+
+        dispatch({
+            type: SET_SINGLE_SHOW,
+            payload: data
+        });
+    }
+
+    const clearSingleShow = () => {
+        dispatch({
+            type: CLEAR_SINGLE_SHOW
+        })
     }
 
     return (
@@ -38,11 +57,13 @@ const ShowsState = ({children}) => {
             shows: state.shows,
             singleShow: state.singleShow,
             loading: state.loading,
-            searchShows
+            searchShows,
+            getSingleShow,
+            clearSingleShow
         }}>
             {children}
         </ShowsContext.Provider>
     )
 }
 
-export default ShowsState
+export default ShowsProvider
