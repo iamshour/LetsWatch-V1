@@ -9,7 +9,7 @@ const SingleItem = ({ name, image, rating, id }) => {
                 alt={name} 
                 style={image ? {} : {width: '210px', height: '295px', objectFit: 'cover'}}
             />
-            <h2>{name}</h2>
+            <h2>{name.length < 23 ? name : `${name.substring(0, 24)}...` }</h2>
         </Link>
     )
 }

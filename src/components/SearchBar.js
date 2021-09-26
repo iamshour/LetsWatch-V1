@@ -9,7 +9,7 @@ const SearchBar = () => {
     
     const [searchTerm, setSearchTerm] = useState('');
 
-    const { searchShows, shows } = useContext(ShowsContext);
+    const { searchShows } = useContext(ShowsContext);
 
     const { alert, setAlert } = useContext(AlertsContext);
 
@@ -20,7 +20,7 @@ const SearchBar = () => {
             setAlert('please enter something', 'danger')
         } else {
             searchShows(searchTerm);
-        } 
+        }
     }
 
     return (

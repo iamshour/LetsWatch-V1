@@ -23,7 +23,7 @@ const StateProvider = ({ children }) => {
             }
         })
 
-        setTimeout(() => dispatch({type: REMOVE_ALERT}), 5000)
+        setTimeout(() => dispatch({type: REMOVE_ALERT}), 4000)
     }
 
     return (

@@ -13,7 +13,7 @@ import {
 const ShowsProvider = ({children}) => {
 
     const initialState = {
-        shows: [],
+        shows: null,
         singleShow: {},
         loading: false
     }

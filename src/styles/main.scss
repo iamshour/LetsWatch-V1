@@ -1,12 +1,6 @@
 $primary: #8a048f;
 $primary-dark: #350236;
 
-// .loading {
-//   width: 200px;
-//   margin: 40px auto;
-//   display: block;
-// }
-
 nav {
   width: 100%;
   height: 10vh;
@@ -159,7 +153,7 @@ nav {
     &:hover,
     &:active {
       background: $primary-dark;
-      transform: translateY(-4px);
+      transform: translateY(-6px);
       img {
         opacity: 1;
       }
@@ -187,6 +181,107 @@ nav {
     h2 {
       padding: 1rem 0;
     }
+  }
+
+  .not-available {
+    font-size: 2.2rem;
+    margin-top: 4rem;
+    color: $primary;
+  }
+}
+
+.single-page {
+  display: flex;
+  align-items: center;
+  padding: 4rem;
+  height: 80vh;
+  justify-content: center;
+
+  img {
+    margin-right: 8rem;
+    height: 38rem;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid $primary;
+    transition: all 250ms ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .info {
+    h1 {
+      font-size: 3.4rem;
+      color: $primary-dark;
+      margin-bottom: 2rem;
+    }
+
+    .genres {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      h4 {
+        font-size: 1.6rem;
+        padding: 0.6rem 1.2rem;
+        background: #0d9bd3;
+        color: #f2f2f2;
+        border-radius: 12px;
+        margin-right: 1.6rem;
+        font-weight: 400;
+      }
+    }
+
+    .rows-container {
+      margin: 4rem 0;
+      .row {
+        display: flex;
+        align-self: center;
+        margin-bottom: 2rem;
+
+        .headline {
+          margin-right: 2rem;
+          display: flex;
+          align-self: center;
+          justify-content: center;
+
+          .icon {
+            font-size: 2.2rem;
+            margin-right: 1rem;
+          }
+
+          h4 {
+            font-size: 1.8rem;
+          }
+        }
+
+        p {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+
+  .official-site {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.8rem;
+
+    &:hover,
+    &:active {
+      color: $primary;
+    }
+
+    .icon {
+      margin-left: 0.6rem;
+      font-size: 2rem;
+    }
+  }
+
+  .summary {
+    font-size: 1.8rem;
+    line-height: 2.4rem;
   }
 }
 
