@@ -2,11 +2,11 @@ import spinner from '../images/Spinner.gif'
 
 const Loading = () => {
     return (
-        <div>
+        <div className='loading-container'>
             <img 
                 src={spinner}
                 alt='loading...'
-                style={{ width: '200px', margin: '40px auto', display: 'block' }}
+                className='loading'
             />
         </div>
     )
